@@ -1,0 +1,18 @@
+[
+  {
+    "dependsOn": [ { "modid": "seafarer" } ],
+    "file": "seafarer:blocktypes/clay/amphora-storage.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value": []
+  },
+  {
+    "dependsOn": [ { "modid": "seafarer" } ],
+    "file": "seafarer:blocktypes/clay/amphora-storage.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors/-",
+    "value": {
+      "name": "ColdVessel"
+    }
+  }
+]

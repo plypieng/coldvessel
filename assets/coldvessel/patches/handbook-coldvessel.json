@@ -1,0 +1,77 @@
+[
+  {
+    "file": "game:blocktypes/clay/fired/storagevessel.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  },
+  {
+    "file": "game:blocktypes/clay/storagevessel-fancy.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/fired/chonkystoragevessel.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-chonky.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-bundle.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-grain-bundle.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  },
+  {
+    "dependsOn": [ { "modid": "seafarer" } ],
+    "file": "seafarer:blocktypes/clay/amphora-storage.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  }
+]

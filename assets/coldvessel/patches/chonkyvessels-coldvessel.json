@@ -1,0 +1,58 @@
+[
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/fired/chonkystoragevessel.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value": []
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/fired/chonkystoragevessel.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors/-",
+    "value": { "name": "ColdVessel" }
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-chonky.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value": []
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-chonky.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors/-",
+    "value": { "name": "ColdVessel" }
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-bundle.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value": []
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-bundle.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors/-",
+    "value": { "name": "ColdVessel" }
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-grain-bundle.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value": []
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-grain-bundle.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors/-",
+    "value": { "name": "ColdVessel" }
+  }
+]

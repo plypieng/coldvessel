@@ -1,0 +1,11 @@
+bin/
+obj/
+.vs/
+.vscode/
+*.zip
+*.dll
+*.pdb
+*.cache
+*.log
+Thumbs.db
+desktop.ini
