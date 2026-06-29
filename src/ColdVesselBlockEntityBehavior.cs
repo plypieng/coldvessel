@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using Vintagestory.API.Config;
@@ -20,6 +21,7 @@ namespace ColdVessel
         private bool hadOriginalPerishMul;
         private bool loggedFirstCoolingMultiplier;
         private float originalPerishMul = 1f;
+        private readonly HashSet<string> loggedUnmatchedIceCodes = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         public ColdVesselBlockEntityBehavior(BlockEntity blockentity) : base(blockentity)
         {
@@ -203,10 +205,68 @@ namespace ColdVessel
             string stackCode = stack.Collectible.Code.ToString();
             foreach (ColdVesselCoolant coolant in ColdVesselModSystem.Config.Coolants)
             {
-                if (string.Equals(stackCode, coolant.Code, StringComparison.OrdinalIgnoreCase)) return coolant;
+                if (MatchesCoolantCode(stackCode, coolant.Code)) return coolant;
             }
 
+            LogUnmatchedIceCode(stackCode);
             return null;
+        }
+
+        private bool MatchesCoolantCode(string stackCode, string configuredCode)
+        {
+            if (string.IsNullOrEmpty(stackCode) || string.IsNullOrEmpty(configuredCode)) return false;
+
+            configuredCode = configuredCode.Trim();
+            string stackDomain;
+            string stackPath;
+            SplitCode(stackCode, out stackDomain, out stackPath);
+
+            if (configuredCode.EndsWith("*", StringComparison.Ordinal))
+            {
+                string configuredWildcardPrefix = configuredCode.Substring(0, configuredCode.Length - 1);
+                if (stackCode.StartsWith(configuredWildcardPrefix, StringComparison.OrdinalIgnoreCase)) return true;
+                if (configuredWildcardPrefix.IndexOf(':') < 0 && stackPath.StartsWith(configuredWildcardPrefix, StringComparison.OrdinalIgnoreCase)) return true;
+                return false;
+            }
+
+            if (string.Equals(stackCode, configuredCode, StringComparison.OrdinalIgnoreCase)) return true;
+
+            string configuredPrefix = configuredCode + "-";
+            if (stackCode.StartsWith(configuredPrefix, StringComparison.OrdinalIgnoreCase)) return true;
+
+            int domainSeparator = configuredCode.IndexOf(':');
+            if (domainSeparator < 0) return string.Equals(stackPath, configuredCode, StringComparison.OrdinalIgnoreCase)
+                || stackPath.StartsWith(configuredPrefix, StringComparison.OrdinalIgnoreCase);
+
+            string configuredDomain = configuredCode.Substring(0, domainSeparator);
+            string configuredPath = configuredCode.Substring(domainSeparator + 1);
+
+            return string.Equals(stackDomain, configuredDomain, StringComparison.OrdinalIgnoreCase)
+                && stackPath.StartsWith(configuredPath + "-", StringComparison.OrdinalIgnoreCase);
+        }
+
+        private void SplitCode(string code, out string domain, out string path)
+        {
+            int domainSeparator = code.IndexOf(':');
+            if (domainSeparator >= 0)
+            {
+                domain = code.Substring(0, domainSeparator);
+                path = code.Substring(domainSeparator + 1);
+                return;
+            }
+
+            domain = "game";
+            path = code;
+        }
+
+        private void LogUnmatchedIceCode(string stackCode)
+        {
+            if (!ColdVesselModSystem.Config.DebugLogging) return;
+            if (string.IsNullOrEmpty(stackCode)) return;
+            if (stackCode.IndexOf("ice", StringComparison.OrdinalIgnoreCase) < 0 && stackCode.IndexOf("snow", StringComparison.OrdinalIgnoreCase) < 0) return;
+            if (!loggedUnmatchedIceCodes.Add(stackCode)) return;
+
+            Blockentity.Api.Logger.Notification("[coldvessel] Saw ice/snow stack that is not configured as coolant at {0}: {1}", Blockentity.Pos, stackCode);
         }
 
         private bool IsCoolingActive()

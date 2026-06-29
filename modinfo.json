@@ -2,7 +2,7 @@
   "type": "code",
   "modid": "coldvessel",
   "name": "Cold Vessel",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "Adds light ice cooling to fired storage vessels without affecting chests, iceboxes, or freezer blocks.",
   "authors": [ "modoki"],
   "side": "universal",

@@ -42,6 +42,8 @@ Important options:
 - `ConsumeOnlyWhenPerishablePresent`: avoids wasting coolant in empty vessels. Default: `true`.
 - `Coolants`: list of item/block codes and cooling hours.
 
+Coolant codes support exact item/block codes and prefix wildcards. For example, `game:glacierice` matches `game:glacierice` and variant codes that start with `game:glacierice-`, while `game:glacierice*` matches any code that starts with that text.
+
 ## Install
 
 Place the release zip in your Vintage Story `Mods` folder and restart the game or server.
