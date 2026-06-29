@@ -15,9 +15,9 @@ Coolants are consumed one at a time only when cooling has run out and perishable
 - `foodshelves:cutice` gives 12 in-game hours of cooling.
 - `game:snowblock` gives 6 in-game hours of cooling.
 - `game:lakeice` gives 48 in-game hours of cooling.
-- `game:glacierice` gives 48 in-game hours of cooling.
+- `game:glacierice` and `game:ice-glacier` give 48 in-game hours of cooling.
 - `aldiclasses:rawice` gives 48 in-game hours of cooling.
-- `game:packedglacierice` gives 96 in-game hours of cooling.
+- `game:packedglacierice` and `game:ice-packedglacier` give 96 in-game hours of cooling.
 
 ## Compatibility
 

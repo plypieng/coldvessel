@@ -263,10 +263,25 @@ namespace ColdVessel
         {
             if (!ColdVesselModSystem.Config.DebugLogging) return;
             if (string.IsNullOrEmpty(stackCode)) return;
-            if (stackCode.IndexOf("ice", StringComparison.OrdinalIgnoreCase) < 0 && stackCode.IndexOf("snow", StringComparison.OrdinalIgnoreCase) < 0) return;
+            if (!IsLikelyIceOrSnowCode(stackCode)) return;
             if (!loggedUnmatchedIceCodes.Add(stackCode)) return;
 
             Blockentity.Api.Logger.Notification("[coldvessel] Saw ice/snow stack that is not configured as coolant at {0}: {1}", Blockentity.Pos, stackCode);
+        }
+
+        private bool IsLikelyIceOrSnowCode(string stackCode)
+        {
+            string domain;
+            string path;
+            SplitCode(stackCode, out domain, out path);
+            string lowerPath = path.ToLowerInvariant();
+
+            return lowerPath.StartsWith("ice-", StringComparison.Ordinal)
+                || lowerPath.StartsWith("snow", StringComparison.Ordinal)
+                || lowerPath.Contains("glacier")
+                || lowerPath == "cutice"
+                || lowerPath == "lakeice"
+                || lowerPath == "rawice";
         }
 
         private bool IsCoolingActive()
