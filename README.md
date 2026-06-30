@@ -8,6 +8,8 @@ It is intentionally narrow: it cools fired/fancy storage vessels, compatible Cho
 
 When a supported vessel contains perishable food and a configured coolant, it consumes one coolant item/block and starts a cooling timer. While active, the vessel applies an extra perish-speed multiplier to its inventory.
 
+Filled liquid containers count as perishable when the liquid inside them can spoil, so cooled vessels can also preserve bottles, buckets, jugs, and similar containers holding perishable liquids.
+
 Coolants are consumed one at a time only when cooling has run out and perishable food is present. Extra coolant can be stored in the vessel and will wait for later refills.
 
 ## Default coolant values

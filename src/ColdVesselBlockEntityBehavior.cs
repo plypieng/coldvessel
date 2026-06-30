@@ -155,6 +155,18 @@ namespace ColdVessel
 
         private bool IsPerishable(ItemStack stack)
         {
+            if (HasPerishTransition(stack)) return true;
+
+            foreach (ItemStack contentStack in GetContainedStacks(stack))
+            {
+                if (HasPerishTransition(contentStack)) return true;
+            }
+
+            return false;
+        }
+
+        private bool HasPerishTransition(ItemStack stack)
+        {
             if (stack == null || stack.Collectible == null) return false;
 
             TransitionableProperties[] props = stack.Collectible.GetTransitionableProperties(Blockentity.Api.World, stack, null);
@@ -166,6 +178,81 @@ namespace ColdVessel
             }
 
             return false;
+        }
+
+        private IEnumerable<ItemStack> GetContainedStacks(ItemStack stack)
+        {
+            if (stack == null || stack.Collectible == null) yield break;
+
+            Type collectibleType = stack.Collectible.GetType();
+            MethodInfo[] methods = collectibleType.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            foreach (MethodInfo method in methods)
+            {
+                if (method.Name != "GetContent" && method.Name != "GetContents") continue;
+
+                ParameterInfo[] parameters = method.GetParameters();
+                object[] args = BuildContentMethodArgs(parameters, stack);
+                if (args == null) continue;
+
+                object result;
+                try
+                {
+                    result = method.Invoke(stack.Collectible, args);
+                }
+                catch
+                {
+                    continue;
+                }
+
+                ItemStack contentStack = result as ItemStack;
+                if (contentStack != null)
+                {
+                    yield return contentStack;
+                    continue;
+                }
+
+                IEnumerable contentStacks = result as IEnumerable;
+                if (contentStacks == null) continue;
+
+                foreach (object content in contentStacks)
+                {
+                    contentStack = content as ItemStack;
+                    if (contentStack != null) yield return contentStack;
+                }
+            }
+        }
+
+        private object[] BuildContentMethodArgs(ParameterInfo[] parameters, ItemStack stack)
+        {
+            if (parameters.Length == 1 && parameters[0].ParameterType.IsAssignableFrom(typeof(ItemStack)))
+            {
+                return new object[] { stack };
+            }
+
+            if (parameters.Length == 2)
+            {
+                object[] args = new object[2];
+                for (int i = 0; i < parameters.Length; i++)
+                {
+                    Type parameterType = parameters[i].ParameterType;
+                    if (parameterType.IsAssignableFrom(typeof(ItemStack)))
+                    {
+                        args[i] = stack;
+                    }
+                    else if (parameterType.IsAssignableFrom(typeof(IWorldAccessor)))
+                    {
+                        args[i] = Blockentity.Api.World;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+
+                return args;
+            }
+
+            return null;
         }
 
         private bool TryConsumeCoolant(IInventory inventory)
