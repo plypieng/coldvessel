@@ -1,6 +1,6 @@
-# Cold Vessel
+# Ice Cold Vessel
 
-Cold Vessel adds ice-powered cooling to fired storage vessels in Vintage Story.
+Ice Cold Vessel adds ice-powered cooling to fired storage vessels in Vintage Story.
 
 It is intentionally narrow: it cools fired/fancy storage vessels, compatible Chonky Vessels, and Seafarer storage amphorae, while leaving chests, crates, CM-Icebox, FoodShelves cabinets/freezers, barrels, and other storage blocks untouched. Cooling is applied on top of normal vessel, cellar, room, and food-category preservation calculations.
 

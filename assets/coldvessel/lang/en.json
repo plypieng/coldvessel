@@ -1,6 +1,6 @@
 {
-  "coldvessel-info-active": "Cold vessel: active, {0:0.0}h left (x{1:0.##} spoil speed)",
-  "coldvessel-info-inactive": "Cold vessel: inactive. Add ice + food.",
-  "coldvessel-handbook-title": "Cold Vessel Cooling",
-  "coldvessel-handbook-text": "Cold vessels can cool perishable food when a coolant is stored inside with the food. Cooling applies an extra spoil-speed multiplier on top of normal vessel, cellar, room, and food-category preservation.<br><br>The vessel consumes only one coolant when cooling time is empty and perishable food is present. Extra coolant remains stored for later refills.<br><br><strong>Default coolant time</strong><br>Snow Block: 6h<br>Cut Ice: 12h<br>Lake Ice, Glacier Ice, and Raw Ice: 48h<br>Packed Glacier Ice: 96h"
+  "coldvessel-info-active": "Ice cold vessel: active, {0:0.0}h left (x{1:0.##} spoil speed)",
+  "coldvessel-info-inactive": "Ice cold vessel: inactive. Add ice + food.",
+  "coldvessel-handbook-title": "Ice Cold Vessel Cooling",
+  "coldvessel-handbook-text": "Ice cold vessels can cool perishable food when a coolant is stored inside with the food. Cooling applies an extra spoil-speed multiplier on top of normal vessel, cellar, room, and food-category preservation.<br><br>The vessel consumes only one coolant when cooling time is empty and perishable food is present. Extra coolant remains stored for later refills.<br><br><strong>Default coolant time</strong><br>Snow Block: 6h<br>Cut Ice: 12h<br>Lake Ice, Glacier Ice, and Raw Ice: 48h<br>Packed Glacier Ice: 96h"
 }
