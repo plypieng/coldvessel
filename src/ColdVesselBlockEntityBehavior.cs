@@ -307,6 +307,7 @@ namespace ColdVessel
             string stackDomain;
             string stackPath;
             SplitCode(stackCode, out stackDomain, out stackPath);
+            bool stackHasExplicitDomain = stackCode.IndexOf(':') >= 0;
 
             if (configuredCode.EndsWith("*", StringComparison.Ordinal))
             {
@@ -327,6 +328,12 @@ namespace ColdVessel
 
             string configuredDomain = configuredCode.Substring(0, domainSeparator);
             string configuredPath = configuredCode.Substring(domainSeparator + 1);
+
+            if (!stackHasExplicitDomain)
+            {
+                return string.Equals(stackPath, configuredPath, StringComparison.OrdinalIgnoreCase)
+                    || stackPath.StartsWith(configuredPath + "-", StringComparison.OrdinalIgnoreCase);
+            }
 
             return string.Equals(stackDomain, configuredDomain, StringComparison.OrdinalIgnoreCase)
                 && stackPath.StartsWith(configuredPath + "-", StringComparison.OrdinalIgnoreCase);

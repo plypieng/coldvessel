@@ -13,10 +13,14 @@ namespace ColdVessel
             new ColdVesselCoolant { Code = "foodshelves:cutice", CoolingHours = 12 },
             new ColdVesselCoolant { Code = "game:snowblock", CoolingHours = 6 },
             new ColdVesselCoolant { Code = "game:lakeice", CoolingHours = 48 },
+            new ColdVesselCoolant { Code = "lakeice", CoolingHours = 48 },
             new ColdVesselCoolant { Code = "game:glacierice", CoolingHours = 48 },
+            new ColdVesselCoolant { Code = "glacierice", CoolingHours = 48 },
             new ColdVesselCoolant { Code = "game:ice-glacier", CoolingHours = 48 },
             new ColdVesselCoolant { Code = "aldiclasses:rawice", CoolingHours = 48 },
+            new ColdVesselCoolant { Code = "rawice", CoolingHours = 48 },
             new ColdVesselCoolant { Code = "game:packedglacierice", CoolingHours = 96 },
+            new ColdVesselCoolant { Code = "packedglacierice", CoolingHours = 96 },
             new ColdVesselCoolant { Code = "game:ice-packedglacier", CoolingHours = 96 }
         };
     }

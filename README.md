@@ -16,10 +16,10 @@ Coolants are consumed one at a time only when cooling has run out and perishable
 
 - `foodshelves:cutice` gives 12 in-game hours of cooling.
 - `game:snowblock` gives 6 in-game hours of cooling.
-- `game:lakeice` gives 48 in-game hours of cooling.
-- `game:glacierice` and `game:ice-glacier` give 48 in-game hours of cooling.
-- `aldiclasses:rawice` gives 48 in-game hours of cooling.
-- `game:packedglacierice` and `game:ice-packedglacier` give 96 in-game hours of cooling.
+- `game:lakeice` and `lakeice` give 48 in-game hours of cooling.
+- `game:glacierice`, `glacierice`, and `game:ice-glacier` give 48 in-game hours of cooling.
+- `aldiclasses:rawice` and `rawice` give 48 in-game hours of cooling.
+- `game:packedglacierice`, `packedglacierice`, and `game:ice-packedglacier` give 96 in-game hours of cooling.
 
 ## Compatibility
 
@@ -44,7 +44,7 @@ Important options:
 - `ConsumeOnlyWhenPerishablePresent`: avoids wasting coolant in empty vessels. Default: `true`.
 - `Coolants`: list of item/block codes and cooling hours.
 
-Coolant codes support exact item/block codes and prefix wildcards. For example, `game:glacierice` matches `game:glacierice` and variant codes that start with `game:glacierice-`, while `game:glacierice*` matches any code that starts with that text.
+Coolant codes support exact item/block codes and prefix wildcards. For example, `game:glacierice` matches `game:glacierice` and variant codes that start with `game:glacierice-`, while `game:glacierice*` matches any code that starts with that text. Unqualified aliases such as `rawice` are included to catch stacks that resolve without a domain.
 
 ## Install
 
