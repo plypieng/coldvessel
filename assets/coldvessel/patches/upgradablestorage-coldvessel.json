@@ -1,0 +1,52 @@
+[
+  {
+    "dependsOn": [ { "modid": "upgradablestorage" } ],
+    "file": "upgradablestorage:blocktypes/storagevessel.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value": []
+  },
+  {
+    "dependsOn": [ { "modid": "upgradablestorage" } ],
+    "file": "upgradablestorage:blocktypes/storagevessel.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors/-",
+    "value": { "name": "ColdVessel" }
+  },
+  {
+    "dependsOn": [ { "modid": "upgradablestorage" } ],
+    "file": "upgradablestorage:blocktypes/storagevessel.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  },
+  {
+    "dependsOn": [ { "modid": "upgradablestorage" } ],
+    "file": "upgradablestorage:blocktypes/labeledstoragevessel.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors",
+    "value": []
+  },
+  {
+    "dependsOn": [ { "modid": "upgradablestorage" } ],
+    "file": "upgradablestorage:blocktypes/labeledstoragevessel.json",
+    "op": "addmerge",
+    "path": "/entityBehaviors/-",
+    "value": { "name": "ColdVessel" }
+  },
+  {
+    "dependsOn": [ { "modid": "upgradablestorage" } ],
+    "file": "upgradablestorage:blocktypes/labeledstoragevessel.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  }
+]

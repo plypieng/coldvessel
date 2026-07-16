@@ -2,7 +2,7 @@
 
 Ice Cold Vessel adds ice-powered cooling to fired storage vessels in Vintage Story.
 
-It is intentionally narrow: it cools fired/fancy storage vessels, compatible Chonky Vessels, and Seafarer storage amphorae, while leaving chests, crates, CM-Icebox, FoodShelves cabinets/freezers, barrels, and other storage blocks untouched. Cooling is applied on top of normal vessel, cellar, room, and food-category preservation calculations.
+It is intentionally narrow: it cools fired/fancy storage vessels, compatible Chonky Vessels, Upgradeable Storage vessels, and Seafarer storage amphorae, while leaving chests, crates, CM-Icebox, FoodShelves cabinets/freezers, barrels, and other storage blocks untouched. Cooling is applied on top of normal vessel, cellar, room, and food-category preservation calculations.
 
 ## How it works
 
@@ -31,8 +31,11 @@ Optional:
 
 - FoodShelves, for `foodshelves:cutice`
 - Chonky Vessels, for supported Chonky storage vessels
+- Upgradeable Storage 1.1.9, for regular and labeled upgradeable storage vessels
 - Seafarer, for storage amphorae
 - Aldi Classes, for `aldiclasses:rawice`
+
+Container mod authors can add optional support without referencing the Ice Cold Vessel source code. See [COMPATIBILITY.md](COMPATIBILITY.md) for the block entity behavior patch and testing checklist.
 
 ## Configuration
 
