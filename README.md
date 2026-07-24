@@ -40,6 +40,7 @@ Container mod authors can add optional support without referencing the Ice Cold 
 ## Configuration
 
 Configuration is written to `ModConfig/coldvessel.json` after the first launch.
+After that, the mod only reads the file and does not rewrite user changes during startup. If the JSON is invalid, the mod uses defaults for that session, reports the problem in the log, and leaves the file untouched so it can be repaired.
 
 Important options:
 

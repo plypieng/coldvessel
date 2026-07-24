@@ -19,24 +19,30 @@ namespace ColdVessel
         {
             try
             {
-                ColdVesselConfig config = api.LoadModConfig<ColdVesselConfig>("coldvessel.json") ?? new ColdVesselConfig();
+                ColdVesselConfig config = api.LoadModConfig<ColdVesselConfig>("coldvessel.json");
+                if (config == null)
+                {
+                    config = new ColdVesselConfig();
+                    api.StoreModConfig(config, "coldvessel.json");
+                    api.Logger.Notification("[coldvessel] Created default config: ModConfig/coldvessel.json");
+                    return config;
+                }
+
                 NormalizeConfig(config);
-                api.StoreModConfig(config, "coldvessel.json");
                 return config;
             }
             catch (Exception ex)
             {
-                api.Logger.Warning("[coldvessel] Failed to load config, using defaults: {0}", ex.Message);
+                api.Logger.Error("[coldvessel] Failed to load ModConfig/coldvessel.json. Using defaults for this session without overwriting the file: {0}", ex);
                 ColdVesselConfig config = new ColdVesselConfig();
                 NormalizeConfig(config);
-                api.StoreModConfig(config, "coldvessel.json");
                 return config;
             }
         }
 
         private void NormalizeConfig(ColdVesselConfig config)
         {
-            if (config.Coolants == null || config.Coolants.Count == 0)
+            if (config.Coolants == null)
             {
                 config.Coolants = new ColdVesselConfig().Coolants;
                 return;
@@ -53,14 +59,7 @@ namespace ColdVessel
                 uniqueCoolants.Add(coolant);
             }
 
-            foreach (ColdVesselCoolant coolant in new ColdVesselConfig().Coolants)
-            {
-                if (seenCodes.Contains(coolant.Code)) continue;
-                seenCodes.Add(coolant.Code);
-                uniqueCoolants.Add(coolant);
-            }
-
-            config.Coolants = uniqueCoolants.Count == 0 ? new ColdVesselConfig().Coolants : uniqueCoolants;
+            config.Coolants = uniqueCoolants;
         }
     }
 }
