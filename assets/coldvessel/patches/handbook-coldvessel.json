@@ -64,6 +64,28 @@
     }
   },
   {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/fired/tallchonkystoragevessel.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-tall-chonky.json",
+    "op": "addmerge",
+    "path": "/attributes/handbook",
+    "value": {
+      "extraSections": [
+        { "title": "coldvessel:coldvessel-handbook-title", "text": "coldvessel:coldvessel-handbook-text" }
+      ]
+    }
+  },
+  {
     "dependsOn": [ { "modid": "seafarer" } ],
     "file": "seafarer:blocktypes/clay/amphora-storage.json",
     "op": "addmerge",

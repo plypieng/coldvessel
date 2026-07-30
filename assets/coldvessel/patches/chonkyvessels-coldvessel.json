@@ -54,5 +54,19 @@
     "op": "addmerge",
     "path": "/entityBehaviors/-",
     "value": { "name": "ColdVessel" }
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/fired/tallchonkystoragevessel.json",
+    "op": "add",
+    "path": "/attributes/coldVesselCompatible",
+    "value": true
+  },
+  {
+    "dependsOn": [ { "modid": "chonkyvessels" } ],
+    "file": "chonkyvessels:blocktypes/clay/storagevessel-tall-chonky.json",
+    "op": "add",
+    "path": "/attributes/coldVesselCompatible",
+    "value": true
   }
 ]

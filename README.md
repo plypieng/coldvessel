@@ -30,12 +30,13 @@ Required:
 Optional:
 
 - FoodShelves, for `foodshelves:cutice`
-- Chonky Vessels, for supported Chonky storage vessels
+- Chonky Vessels, including the regular, bundled, and girthy storage vessels
 - Upgradeable Storage 1.1.9, for regular and labeled upgradeable storage vessels
 - Seafarer, for storage amphorae
 - Aldi Classes, for `aldiclasses:rawice`
 
 Container mod authors can add optional support without referencing the Ice Cold Vessel source code. See [COMPATIBILITY.md](COMPATIBILITY.md) for the block entity behavior patch and testing checklist.
+Compatible container blocks can opt in automatically with the `coldVesselCompatible` block attribute.
 
 ## Configuration
 

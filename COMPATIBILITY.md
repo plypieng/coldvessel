@@ -1,6 +1,6 @@
 # Adding Ice Cold Vessel Compatibility
 
-Ice Cold Vessel support is enabled by appending its `ColdVessel` block entity behavior to a compatible container block type. A compatibility patch can live in either mod, but it must be shipped by only one of them to avoid adding the behavior twice.
+Ice Cold Vessel can automatically enable cooling on compatible container block types that opt in with the `coldVesselCompatible` block attribute. Directly appending its `ColdVessel` block entity behavior remains supported for older integrations.
 
 ## Container requirements
 
@@ -12,7 +12,35 @@ The target block entity must:
 
 The behavior preserves the inventory's existing perish multiplier and applies the configured cold multiplier on top of it. Container-specific preservation bonuses can therefore continue to work while the vessel is cold.
 
-## Optional compatibility patch
+## Recommended opt-in attribute
+
+Add the following attribute to a compatible container block type:
+
+```json
+"attributes": {
+  "coldVesselCompatible": true
+}
+```
+
+If the block already has an `attributes` object, add only the `coldVesselCompatible` property to it. Ice Cold Vessel scans finalized block types, appends its behavior once, and ignores blocks that already have the behavior.
+
+An optional compatibility patch can add the marker without requiring Ice Cold Vessel to know the container's block code:
+
+```json
+[
+  {
+    "dependsOn": [ { "modid": "coldvessel" } ],
+    "file": "yourmod:blocktypes/path/to/container.json",
+    "op": "add",
+    "path": "/attributes/coldVesselCompatible",
+    "value": true
+  }
+]
+```
+
+The marker is deliberately opt-in. Generic container properties are also used by chests, crates, cabinets, and dedicated ice storage, so they are not treated as vessel tags automatically.
+
+## Direct behavior patch
 
 Place a patch like this at `assets/yourmod/patches/coldvessel-compat.json`. Replace the `file` value with the asset path of the container block type.
 
