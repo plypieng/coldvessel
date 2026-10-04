@@ -55,4 +55,27 @@ Coolant codes support exact item/block codes and prefix wildcards. For example, 
 
 Place the release zip in your Vintage Story `Mods` folder and restart the game or server.
 
-For multiplayer, install the same mod version on the server and on clients if your server requires matching client mod lists.
+For multiplayer, install the same mod version on the server and clients, then restart the server and reconnect.
+
+## Server troubleshooting
+
+- Cooling requires perishable food as well as ice by default. Ice alone leaves the vessel inactive.
+- Supported vessels should show an inactive cooling tooltip even before food or ice is added. If the tooltip is missing, check that the client has the mod and that the server's vessel patches loaded.
+- A successful C# compilation message does not confirm that the mod's JSON assets loaded. Look for `[coldvessel] Cooling behavior attached to ... block variants` in `Logs/server-main.log`; a count of zero means the container patches were not applied.
+- Versions through 0.1.23 were packaged with backslashes inside the ZIP, which can prevent asset discovery on Linux. Upgrade to 0.1.24 or later on the server and clients. As a temporary workaround, repack the archive using forward-slash entry names with `modinfo.json`, `src/`, and `assets/` directly at its root.
+
+## Building a release
+
+From the repository root, run:
+
+```powershell
+./scripts/Build-Release.ps1
+```
+
+The script reads the version from `modinfo.json`, creates a ZIP with forward-slash entry names, and verifies its complete file list, JSON, and contents against the source tree. It refuses to overwrite an existing archive. Do not use Windows PowerShell `Compress-Archive` to package this mod: the old archives created by that command contained Windows path separators.
+
+To verify a previously built archive:
+
+```powershell
+./scripts/Test-Release.ps1 -PackagePath ./coldvessel_0.1.24.zip
+```

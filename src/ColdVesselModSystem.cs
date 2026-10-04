@@ -44,9 +44,16 @@ namespace ColdVessel
                 addedCount++;
             }
 
-            if (addedCount > 0)
+            int supportedCount = 0;
+            foreach (Block block in api.World.Blocks)
             {
-                api.Logger.Notification("[coldvessel] Automatically enabled cooling on {0} tagged vessel block types", addedCount);
+                if (block != null && HasColdVesselBehavior(block.BlockEntityBehaviors)) supportedCount++;
+            }
+
+            api.Logger.Notification("[coldvessel] Cooling behavior attached to {0} block variants ({1} added from compatibility markers)", supportedCount, addedCount);
+            if (supportedCount == 0)
+            {
+                api.Logger.Warning("[coldvessel] No vessels received cooling. Check that the ZIP contains assets/coldvessel/patches/ with forward-slash paths and that vessel patches loaded successfully.");
             }
         }
 
